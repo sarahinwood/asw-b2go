@@ -2,7 +2,7 @@
 
 bin/interproscan/interproscan.sh \
     --applications TIGRFAM,PANTHER,ProSiteProfiles,SMART,ProSitePatterns,Pfam \
-    --output-dir output/chunk001 \
-    --input output/fasta_chunks/trinity_chunk001.fasta \
+    --output-dir output/chunk002 \
+    --input output/fasta_chunks/trinity_chunk002.fasta \
     --formats xml,tsv
     
