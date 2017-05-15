@@ -4,5 +4,6 @@ bin/interproscan/interproscan.sh \
     --applications TIGRFAM,PANTHER,ProSiteProfiles,SMART,ProSitePatterns,Pfam \
     --output-dir output/chunk002 \
     --input output/fasta_chunks/trinity_chunk002.fasta \
+    --seqtype n \
     --formats xml,tsv
     
