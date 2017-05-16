@@ -1,9 +1,29 @@
 #!/usr/bin/env bash
 
-bin/interproscan/interproscan.sh \
-    --applications TIGRFAM,PANTHER,ProSiteProfiles,SMART,ProSitePatterns,Pfam \
-    --output-dir output/chunk002 \
-    --input output/fasta_chunks/trinity_chunk002.fasta \
-    --seqtype n \
-    --formats xml,tsv
-    
+set -eu
+
+run_interproscan () {
+    local _input_chunk
+    local _outdir
+    local _bn
+
+    _input_chunk="${1}"
+    _bn=$(basename "${_input_chunk}" .fasta)
+    _outdir="output/interproscan/${_bn/trinity_/}"
+
+    if [[ ! -e "${_outdir}" ]]; then
+        mkdir -p "${_outdir}"
+    fi
+
+    bin/interproscan/interproscan.sh \
+        --applications TIGRFAM,PANTHER,SUPERFAMILY,SMART,PRINTS,SignalP_EUK,TMHMM \
+        --output-dir "${_outdir}" \
+        --input "${_input_chunk}" \
+        --seqtype n \
+        --formats xml,tsv
+}
+
+export -f run_interproscan
+
+find "output/fasta_chunks" -name "*.fasta" \
+    -exec bash -c 'run_interproscan "${0}"' {} \;

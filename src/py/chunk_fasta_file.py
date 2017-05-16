@@ -13,8 +13,7 @@ record_keys = list(record_index.keys())
 number_of_records = len(record_index)
 
 # write batch_size records to fasta file
-batch_size = 3000
-number_of_records / batch_size
+batch_size = 2000
 i = 0
 for start in range(0, number_of_records, batch_size):
     i += 1
