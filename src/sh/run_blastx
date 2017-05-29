@@ -7,7 +7,7 @@ if [[ ! -e "${outdir}" ]]; then
     mkdir -p "${outdir}"
 fi
 
-export BLASTDB="data/blastdb"
+export BLASTDB="data/blastdb/"
 INPUT_CHUNK="output/fasta_chunks/trinity_chunk001.fasta"
 
 
