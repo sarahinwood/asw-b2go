@@ -7,14 +7,12 @@ if [[ ! -e "${outdir}" ]]; then
     mkdir -p "${outdir}"
 fi
 
-export BLASTDB="data/blastdb/"
 INPUT_CHUNK="output/fasta_chunks/trinity_chunk001.fasta"
-
 
 blastx -query "${INPUT_CHUNK}" \
     -num_threads 50 \
     -task "blastx-fast" \
-    -db "refseq_protein" \
+    -db "data/blastdb/refseq_protein/refseq_protein" \
     -out "${outdir}/chunk001.xml" \
     -outfmt 5 \
 
