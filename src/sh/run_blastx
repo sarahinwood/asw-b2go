@@ -14,5 +14,5 @@ blastx -query "${INPUT_CHUNK}" \
     -task "blastx-fast" \
     -db "data/blastdb/refseq_protein/refseq_protein" \
     -out "${outdir}/chunk001.xml" \
-    -outfmt 5 \
+    -outfmt 5
 
