@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -eu
+
+renamefile () {
+	oldfile="${1}"
+	dn="$(dirname "${oldfile}")"
+	chunkname="${dn##*/}"
+	mv "${oldfile}" "${dn}/${chunkname}_results.xml"
+}
+
+export -f renamefile
+
+find output/blastx -name "results.xml" \
+	-exec bash -c 'renamefile "${0}"' {} \;
+	
